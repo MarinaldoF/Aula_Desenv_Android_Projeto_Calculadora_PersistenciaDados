@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.io.FileNotFoundException
 import java.io.IOException
 
-//teste
+//teste teste
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
