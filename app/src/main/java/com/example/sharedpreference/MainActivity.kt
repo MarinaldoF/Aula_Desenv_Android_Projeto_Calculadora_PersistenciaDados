@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.FileNotFoundException
+import java.io.IOException
 
 //teste
 class MainActivity : AppCompatActivity() {
@@ -33,5 +35,18 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SaudacaoActivity :: class.java)
             startActivity(intent)
         })
+
+
+
+    }
+
+    fun gravarDadoArquivo(filename: String, data: String) {
+        try {
+            val fs = openFileOutput(filename, Context.MODE_PRIVATE);
+            fs.write(data.toByteArray())
+            fs.close()
+        }
+        catch (e: FileNotFoundException) { log.i("gravaDadoArquivo", "FileNotFoundException")}
+        catch (e: IOException){ log.i( "gravarDadosArquivo", "IOException")}
     }
 }

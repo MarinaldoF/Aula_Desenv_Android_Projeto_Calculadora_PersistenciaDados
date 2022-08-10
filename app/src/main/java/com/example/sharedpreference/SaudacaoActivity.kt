@@ -23,4 +23,6 @@ class SaudacaoActivity : AppCompatActivity() {
 
     }
 
+    val data = recupera
+
 }
