@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,37 +17,42 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnSalvar.setOnClickListener(View.OnClickListener {
-            val saudacaoPersistencia = this.getSharedPreferences( "saudacao", Context.MODE_PRIVATE)
-            val editor = saudacaoPersistencia.edit()
+        btnSalvar.setOnClickListener{
+//          //salva os valores
+            val data = txtNome.text.toString() + ": " + listTratamento.selectedItem.toString()
 
-            editor.putString("nome", txtNome.text.toString())
-            editor.apply()
+            //grava dados no arquivo
+            gravaDadoArquivo("saudacao", data)
 
-            Toast.makeText(this, "Salvo com sucesso", Toast.LENGTH_SHORT).show()
+//           //informa uma mensagem para o usuário
+            Toast.makeText(this,"Salvo com Sucesso", Toast.LENGTH_SHORT).show()
+        }
 
-
-        })
-
-        btnExibir.setOnClickListener(View.OnClickListener {
-
-
-
-            val intent = Intent(this, SaudacaoActivity :: class.java)
+        // carrega outra tela
+        btnExibir.setOnClickListener{
+            val intent = Intent(this, SaudacaoActivity::class.java)
             startActivity(intent)
-        })
-
-
-
+        }
     }
 
-    fun gravarDadoArquivo(filename: String, data: String) {
-        try {
+    //grava os dados em um arquivo
+    fun gravaDadoArquivo(filename: String, data: String){
+
+        //tratamentos de erros
+        try{
+            //abre um arquivo caso nao tem
             val fs = openFileOutput(filename, Context.MODE_PRIVATE);
+
+
             fs.write(data.toByteArray())
+
+            //Fecha o arquivo
             fs.close()
+            //Tratamento dos erros
+        } catch ( e: FileNotFoundException){
+            Log.i ("GravaDadoArquivo", "FileNotFoundException")
+        } catch (e: IOException){
+            Log.i("GravaDadoArquivo", "IOException")
         }
-        catch (e: FileNotFoundException) { log.i("gravaDadoArquivo", "FileNotFoundException")}
-        catch (e: IOException){ log.i( "gravarDadosArquivo", "IOException")}
     }
 }
