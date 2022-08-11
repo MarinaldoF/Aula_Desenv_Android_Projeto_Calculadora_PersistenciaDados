@@ -14,22 +14,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //instancia do banco
+        var db = DatabaseManager(this, "saudacoes")
+
         btnSalvar.setOnClickListener(View.OnClickListener {
-            val saudacaoPersistencia = this.getSharedPreferences( "saudacao", Context.MODE_PRIVATE)
-            val editor = saudacaoPersistencia.edit()
 
-            editor.putString("nome", txtNome.text.toString())
-            editor.apply()
-
-            Toast.makeText(this, "Salvo com sucesso", Toast.LENGTH_SHORT).show()
-
+            //remove os item do banco
+            db.removeSaudacao()
+            //insere no banco os dados
+            db.insereSaudacao(1, txtNome.text.toString(), listTratamento.selectedItem.toString())
+            // mostra uma mensagem de sucesso
+            Toast.makeText(this, "Salvo com Sucesso", Toast.LENGTH_SHORT).show()
 
         })
-
+        //exibe outra tela
         btnExibir.setOnClickListener(View.OnClickListener {
-
-
-
             val intent = Intent(this, SaudacaoActivity :: class.java)
             startActivity(intent)
         })
