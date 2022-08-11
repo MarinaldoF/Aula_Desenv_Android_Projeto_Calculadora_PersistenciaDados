@@ -12,6 +12,9 @@ Ativida de desenvolvimento android. O desafio foi criar um app com dois layaut F
 ---
 
 Fotos da tela:
+---
+
+
 ![01](https://user-images.githubusercontent.com/81994459/184050151-eb219dcb-d155-4f47-ba7f-05e081681b79.PNG)
 
 -----
