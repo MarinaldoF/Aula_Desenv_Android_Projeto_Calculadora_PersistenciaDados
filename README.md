@@ -7,7 +7,7 @@ Atividade feita em kotlin
 
 -----
 
-Ativida de desenvolvimento android. O desafio foi criar um app com dois layaut FrameLayout com conceitos de SharedPreferences, spinner e integração com banco sqlite
+Ativida de desenvolvimento android. O desafio foi criar um app com dois layaut FrameLayout com conceitos de persistência de dados via shared preferences
 
 ---
 
