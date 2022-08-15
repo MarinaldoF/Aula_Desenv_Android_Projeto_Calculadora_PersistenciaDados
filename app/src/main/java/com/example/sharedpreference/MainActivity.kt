@@ -13,6 +13,7 @@ import java.io.IOException
 
 //teste teste teste
 class MainActivity : AppCompatActivity() {
+    //função que carrega aos configurações ao inicia a tela
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

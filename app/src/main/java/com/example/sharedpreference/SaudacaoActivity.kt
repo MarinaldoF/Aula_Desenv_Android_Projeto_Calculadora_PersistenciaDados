@@ -11,6 +11,7 @@ import java.nio.charset.Charset
 import java.util.*
 
 class SaudacaoActivity : AppCompatActivity() {
+    //função que carrega aos configurações ao inicia a tela
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_saudacao)
